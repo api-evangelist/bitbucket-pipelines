@@ -1,0 +1,29 @@
+aid: bitbucket-pipelines
+url: https://raw.githubusercontent.com/api-evangelist/bitbucket-pipelines/refs/heads/main/apis.yml
+name: Bitbucket Pipelines
+x-type: company
+description: >-
+  Bitbucket Pipelines is Atlassian's built-in CI/CD service for Bitbucket Cloud, with cloud-hosted runners and YAML-defined pipelines.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - DevOps
+  - CI/CD
+  - Pipelines
+  - Atlassian
+  - Bitbucket
+created: '2026-05-08'
+modified: '2026-05-08'
+specificationVersion: '0.19'
+apis: []
+common:
+  - type: Website
+    url: https://bitbucket.org/product/features/pipelines
+  - type: Plans
+    url: plans/bitbucket-pipelines-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/bitbucket-pipelines-rate-limits.yml
+  - type: FinOps
+    url: finops/bitbucket-pipelines-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
