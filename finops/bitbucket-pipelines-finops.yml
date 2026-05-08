@@ -5,7 +5,7 @@ provider: Bitbucket Pipelines
 providerId: bitbucket-pipelines
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - DevOps
 - CI/CD
@@ -15,10 +15,21 @@ tags:
 - FinOps
 - Cost Management
 - FOCUS
-description: FOCUS-aligned FinOps placeholder for Bitbucket Pipelines. Pipeline will replace with real billing details.
-notes: Initial scaffold — billing model has not yet been reconciled.
+description: >-
+  FOCUS-aligned FinOps profile for Bitbucket Pipelines. Costs come from the
+  Bitbucket Cloud per-user subscription (Standard/Premium), Pipelines
+  build-minute consumption (with per-tier free allotment plus $10/1,000
+  minute add-on packs), Premium-only advanced security charges, plus the
+  customer's own infrastructure cost for self-hosted runners (free at the
+  Pipelines layer).
+notes: >-
+  Atlassian invoices monthly in USD per workspace; the Bitbucket admin
+  Pipelines usage page shows minute consumption per repository, suitable for
+  chargeback. Self-hosted runner labels can also be used as cost-allocation
+  tags.
 sources:
-- https://bitbucket.org/product/features/pipelines
+- https://www.atlassian.com/software/bitbucket/pricing
+- https://support.atlassian.com/bitbucket-cloud/docs/build-minutes/
 - https://focus.finops.org/focus-specification/v1-3/
 alignedWith:
   framework: FinOps Foundation Framework
@@ -26,10 +37,10 @@ alignedWith:
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-publisherName: Bitbucket Pipelines
-serviceCategory: DevOps
+publisherName: Atlassian
+serviceCategory: DevOps / CI/CD
 billingModel:
-  pricingCategory: To Be Reconciled
+  pricingCategory: Subscription + Usage
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
@@ -39,28 +50,49 @@ billingModel:
 focusColumns:
   ServiceName: Bitbucket Pipelines
   ServiceCategory: DevOps
-  ProviderName: Bitbucket Pipelines
-  PublisherName: Bitbucket Pipelines
-  InvoiceIssuerName: Bitbucket Pipelines
+  ProviderName: Atlassian
+  PublisherName: Atlassian
+  InvoiceIssuerName: Atlassian
   BillingCurrency: USD
   ChargeCategory: Usage
+  PricingUnit: user / minute
 meters:
-- name: api_usage
-  description: Catch-all meter pending reconciliation.
-  unit: varies
+- name: bitbucket_users
+  description: Active Bitbucket Cloud users in the billing month.
+  unit: user-month
+  aggregation: max
+  dimensions:
+  - workspace
+  - tier
+- name: pipelines_build_minutes
+  description: Pipelines hosted-runner build minutes consumed.
+  unit: minute
   aggregation: sum
   dimensions:
-  - account
-  - resource
+  - workspace
+  - repository
+- name: additional_minute_packs
+  description: 1,000-minute packs purchased above the included allotment.
+  unit: pack-month
+  aggregation: sum
+  dimensions:
+  - workspace
+- name: self_hosted_runner_vm_hours
+  description: Underlying cloud compute hours for self-hosted Pipelines runners.
+  unit: vm-hour
+  aggregation: sum
+  dimensions:
+  - cloud_account
+  - runner_label
 principles:
 - name: Visibility
-  description: Pull provider invoices or usage exports until a self-serve usage feed is documented.
+  description: Use the Bitbucket admin Pipelines minutes page; reconcile against monthly Atlassian invoice.
 - name: Allocation
-  description: Tag invoice line items to consuming business units in your FinOps store.
+  description: Allocate by repository / workspace; add cost-center tags via runner labels for self-hosted.
 - name: Optimization
-  description: Levers depend on the provider's billing model; review at renewal once reconciled.
+  description: Cache aggressively; use parallel steps wisely; switch heavy workloads to free self-hosted runners; right-size 1,000-minute packs vs upgrading tier.
 - name: Accountability
-  description: Assign a contract owner to review billing against negotiated terms.
+  description: Assign workspace admin owners; alert on minute-consumption trajectory toward plan ceiling.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

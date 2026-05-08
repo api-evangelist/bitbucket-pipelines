@@ -5,7 +5,7 @@ provider: Bitbucket Pipelines
 providerId: bitbucket-pipelines
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - DevOps
 - CI/CD
@@ -13,29 +13,114 @@ tags:
 - Atlassian
 - Bitbucket
 - Plans
-description: Placeholder plans/pricing artifact for Bitbucket Pipelines. Replace with real published pricing once
-  the pipeline researches the provider's plans page.
-notes: Initial scaffold — plans/pricing have not yet been reconciled.
+- Pricing
+description: >-
+  Bitbucket Cloud bundles Pipelines into its three subscription tiers — Free,
+  Standard and Premium — each with an included monthly Pipelines build-minute
+  allotment. Additional minutes are sold uniformly across tiers as 1,000-min
+  packs at $10. Self-hosted runners are free; only the build-minute meter
+  matters for cloud-hosted runners.
+notes: >-
+  Prices reflect public Atlassian pricing as of 2026-05-08. The Free plan is
+  capped at 5 users.
 sources:
-- https://bitbucket.org/product/features/pipelines
+- https://www.atlassian.com/software/bitbucket/pricing
+- https://support.atlassian.com/bitbucket-cloud/docs/build-minutes/
 plans:
-- id: bitbucket-pipelines-default
-  name: To Be Reconciled
-  type: enterprise
-  description: Initial scaffold; replace with provider plan tiers once pricing is reconciled.
+- id: bb-cloud-free
+  name: Bitbucket Cloud Free (Pipelines)
+  type: free
+  description: Free plan — up to 5 users, 50 Pipelines build minutes/month.
   entries:
-  - label: API Access
-    name: api_access
+  - label: Per-user
+    name: per_user
     type: flat
-    metric: varies
-    limit: -1
-    timeFrame: usage
+    metric: user-month
+    limit: 5
+    timeFrame: month
     geo: global
     unit: 1
-    price: see https://bitbucket.org/product/features/pipelines
+    price: 0
+    currency: USD
     userMultiplied: false
-  elements:
-  - name: Pending Reconciliation
+  - label: Included build minutes
+    name: included_minutes
+    type: tier
+    metric: minutes/month
+    limit: 50
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 0
+    userMultiplied: false
+- id: bb-cloud-standard
+  name: Bitbucket Cloud Standard (Pipelines)
+  type: subscription
+  description: $3.65/user/month; 2,500 Pipelines build minutes/month included.
+  entries:
+  - label: Per-user
+    name: per_user
+    type: flat
+    metric: user-month
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 3.65
+    currency: USD
+    userMultiplied: true
+  - label: Included build minutes
+    name: included_minutes
+    type: tier
+    metric: minutes/month
+    limit: 2500
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 0
+    userMultiplied: false
+- id: bb-cloud-premium
+  name: Bitbucket Cloud Premium (Pipelines)
+  type: subscription
+  description: $7.25/user/month; 3,500 Pipelines build minutes/month included; advanced security.
+  entries:
+  - label: Per-user
+    name: per_user
+    type: flat
+    metric: user-month
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 7.25
+    currency: USD
+    userMultiplied: true
+  - label: Included build minutes
+    name: included_minutes
+    type: tier
+    metric: minutes/month
+    limit: 3500
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 0
+    userMultiplied: false
+- id: bb-cloud-additional-minutes
+  name: Additional Pipelines build minutes
+  type: addOn
+  description: 1,000-minute packs at $10/month, available on every tier.
+  entries:
+  - label: Build minutes pack
+    name: minutes_pack
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1000
+    price: 10
+    currency: USD
+    userMultiplied: false
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

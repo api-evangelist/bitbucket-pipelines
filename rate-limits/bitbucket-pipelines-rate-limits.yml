@@ -5,7 +5,7 @@ provider: Bitbucket Pipelines
 providerId: bitbucket-pipelines
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - DevOps
 - CI/CD
@@ -15,21 +15,57 @@ tags:
 - Rate Limiting
 - Quotas
 - Throttling
-description: Placeholder rate-limit artifact for Bitbucket Pipelines. Replace with real limits once researched.
-notes: Initial scaffold — limits have not yet been reconciled.
+description: >-
+  Bitbucket Cloud applies hourly rate limits per app/installation/user and per
+  IP, with a 1-hour sliding window. Pipelines also enforces concurrency caps
+  (parallel-step limits) and a per-step build-time cap. The 1-hour API quota
+  is observable through the X-RateLimit-* response headers and 429 carries a
+  Retry-After hint.
+notes: >-
+  Per-app installation: 1,000 requests/hour for unauthenticated and
+  60,000/hour for authenticated calls (per public Atlassian documentation).
+  Per-step cap is 120 minutes. Concurrent steps depend on plan tier.
 sources:
-- https://bitbucket.org/product/features/pipelines
+- https://support.atlassian.com/bitbucket-cloud/docs/api-request-limits/
+- https://support.atlassian.com/bitbucket-cloud/docs/build-minutes/
+- https://support.atlassian.com/bitbucket-cloud/docs/pipelines-configuration-reference/
 responseCodes:
   throttled: 429
+headers:
+- name: X-RateLimit-Limit
+  description: Per-window quota.
+- name: X-RateLimit-Remaining
+  description: Calls remaining.
+- name: X-RateLimit-Reset
+  description: Epoch seconds when window resets.
+- name: Retry-After
+  description: Seconds to wait after a 429.
 limits:
-- name: Default
-  scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+- name: Authenticated requests (per workspace / app installation)
+  scope: workspace_or_app
+  metric: requests
+  limit: 60000
+  timeFrame: 1h
+- name: Unauthenticated requests
+  scope: ip
+  metric: requests
+  limit: 1000
+  timeFrame: 1h
+- name: Pipelines step max duration
+  scope: step
+  metric: minutes
+  limit: 120
+  notes: Per-step build-time cap.
+- name: Concurrent steps
+  scope: workspace
+  metric: concurrent_steps
+  limit: tier-dependent
+  notes: Free/Standard/Premium tiers have differing concurrency budgets.
 policies:
 - name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  description: Honor Retry-After on 429; use exponential backoff with jitter.
+- name: Auth Recommendation
+  description: Use OAuth 2.0 / workspace access tokens / app passwords; avoid IP-based unauth calls.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
