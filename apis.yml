@@ -1,7 +1,7 @@
 aid: bitbucket-pipelines
 url: https://raw.githubusercontent.com/api-evangelist/bitbucket-pipelines/refs/heads/main/apis.yml
 name: Bitbucket Pipelines
-x-type: company
+kind: company
 description: >-
   Bitbucket Pipelines is Atlassian's built-in CI/CD service for Bitbucket
   Cloud, with cloud-hosted and self-hosted runners and YAML-defined pipelines.
