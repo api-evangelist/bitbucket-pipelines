@@ -2,110 +2,67 @@ aid: bitbucket-pipelines
 url: https://raw.githubusercontent.com/api-evangelist/bitbucket-pipelines/refs/heads/main/apis.yml
 name: Bitbucket Pipelines
 kind: company
-description: Bitbucket Pipelines is Atlassian's built-in CI/CD service for Bitbucket Cloud, with cloud-hosted and self-hosted
-  runners and YAML-defined pipelines. Pipelines is consumed via the Bitbucket Cloud REST API v2.0 under the /pipelines/ resource
-  family. Atlassian publishes a Swagger 2.0 specification for the full Bitbucket Cloud API.
+description: >-
+  Bitbucket Pipelines is Atlassian's built-in CI/CD service for Bitbucket Cloud, with cloud-hosted and self-hosted
+  runners and YAML-defined pipelines. Pipelines is consumed via the Bitbucket Cloud REST API v2.0 under the /pipelines/
+  resource family. Atlassian publishes a Swagger 2.0 specification for the full Bitbucket Cloud API.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- DevOps
-- CI/CD
-- Pipelines
-- Atlassian
-- Bitbucket
-- Hosted
-- Self-Hosted Runners
+  - DevOps
+  - CI/CD
+  - Pipelines
+  - Atlassian
+  - Bitbucket
+  - Hosted
+  - Self-Hosted Runners
 created: '2026-05-08'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: bitbucket-pipelines:rest
-  name: Bitbucket Cloud REST API v2.0 (Pipelines)
-  description: The Pipelines slice of the Bitbucket Cloud REST API v2.0. Endpoint families include /repositories/{workspace}/{repo_slug}/pipelines/,
-    /pipelines/{pipeline_uuid}/steps/, /pipelines_config, deployments, environments, schedules, ssh keys, variables, known
-    hosts, runners and caches. OAuth 2.0, app passwords or workspace access tokens.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
-  baseURL: https://api.bitbucket.org/2.0
-  tags:
-  - REST
-  - v2.0
-  - Pipelines
-  - Deployments
-  - Runners
-  properties:
-  - type: Documentation
-    url: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
-  - type: APIReference
-    url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/
-  - type: OpenAPI
-    url: openapi/bitbucket-pipelines-openapi.json
-  - type: OpenAPISource
-    url: https://api.bitbucket.org/swagger.json
-  - type: Authentication
-    url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-addon.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-branch-restrictions.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-branching-model.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-commit-statuses.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-commits.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-deployments.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-downloads.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-gpg.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-issue-tracker.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-pipelines.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-projects.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-pullrequests.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-refs.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-reports.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-repositories.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-ssh.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-search.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-snippets.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-source.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-users.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-webhooks.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-workspaces.yaml
-  - type: NaftikoCapability
-    url: capabilities/bitbucket-pipelines-properties.yaml
+  - aid: bitbucket-pipelines:rest
+    name: Bitbucket Cloud REST API v2.0 (Pipelines)
+    description: >-
+      The Pipelines slice of the Bitbucket Cloud REST API v2.0. Endpoint families include
+      /repositories/{workspace}/{repo_slug}/pipelines/, /pipelines/{pipeline_uuid}/steps/, /pipelines_config,
+      deployments, environments, schedules, ssh keys, variables, known hosts, runners and caches. OAuth 2.0, app
+      passwords or workspace access tokens.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
+    baseURL: https://api.bitbucket.org/2.0
+    tags:
+      - REST
+      - v2.0
+      - Pipelines
+      - Deployments
+      - Runners
+    properties:
+      - type: Documentation
+        url: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
+      - type: APIReference
+        url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/
+      - type: OpenAPI
+        url: openapi/bitbucket-pipelines-openapi.json
+      - type: OpenAPISource
+        url: https://api.bitbucket.org/swagger.json
+      - type: Authentication
+        url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 common:
-- type: Website
-  url: https://bitbucket.org/product/features/pipelines
-- type: Documentation
-  url: https://support.atlassian.com/bitbucket-cloud/docs/get-started-with-bitbucket-pipelines/
-- type: Pricing
-  url: https://www.atlassian.com/software/bitbucket/pricing
-- type: GitHub
-  url: https://bitbucket.org/atlassian/atlassian-pipelines-pipes
-- type: StatusPage
-  url: https://bitbucket.status.atlassian.com/
-- type: Plans
-  url: plans/bitbucket-pipelines-plans-pricing.yml
-- type: RateLimits
-  url: rate-limits/bitbucket-pipelines-rate-limits.yml
-- type: FinOps
-  url: finops/bitbucket-pipelines-finops.yml
+  - type: Website
+    url: https://bitbucket.org/product/features/pipelines
+  - type: Documentation
+    url: https://support.atlassian.com/bitbucket-cloud/docs/get-started-with-bitbucket-pipelines/
+  - type: Pricing
+    url: https://www.atlassian.com/software/bitbucket/pricing
+  - type: GitHub
+    url: https://bitbucket.org/atlassian/atlassian-pipelines-pipes
+  - type: StatusPage
+    url: https://bitbucket.status.atlassian.com/
+  - type: Plans
+    url: plans/bitbucket-pipelines-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/bitbucket-pipelines-rate-limits.yml
+  - type: FinOps
+    url: finops/bitbucket-pipelines-finops.yml
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,43 +1,63 @@
 # Bitbucket Pipelines (bitbucket-pipelines)
 
-Bitbucket Pipelines is Atlassian's built-in CI/CD service for Bitbucket Cloud, with cloud-hosted and self-hosted runners and YAML-defined pipelines. The Pipelines surface is exposed as the `/pipelines/` resource family within the broader Bitbucket Cloud REST API v2.0.
+Bitbucket Pipelines is Atlassian's built-in CI/CD service for Bitbucket Cloud, with cloud-hosted and self-hosted runners and YAML-defined pipelines. Pipelines is consumed via the Bitbucket Cloud REST API v2.0 under the /pipelines/ resource family. Atlassian publishes a Swagger 2.0 specification for the full Bitbucket Cloud API.
 
-**APIs.json:** [apis.yml](apis.yml)
-
-## APIs
-- **Bitbucket Cloud REST v2.0 (Pipelines slice)** — `https://api.bitbucket.org/2.0` — `/repositories/{workspace}/{repo}/pipelines/`, steps, deployments, environments, schedules, runners, caches, variables, ssh keys, known hosts. OAuth 2.0, app passwords or workspace access tokens.
-
-## OpenAPI (fetched 2026-05-08)
-`openapi/bitbucket-pipelines-openapi.json` — Atlassian's published Swagger 2.0 spec for the entire Bitbucket Cloud API. Source: <https://api.bitbucket.org/swagger.json>.
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/bitbucket-pipelines/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/bitbucket-pipelines/refs/heads/main/apis.yml)
 
 ## Tags
-DevOps, CI/CD, Pipelines, Atlassian, Bitbucket, Hosted, Self-Hosted Runners
 
-## Common Properties
-- [Pipelines feature page](https://bitbucket.org/product/features/pipelines)
-- [Docs](https://support.atlassian.com/bitbucket-cloud/docs/get-started-with-bitbucket-pipelines/)
-- [API reference](https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/)
-- [Pricing](https://www.atlassian.com/software/bitbucket/pricing)
-- [Status](https://bitbucket.status.atlassian.com/)
-- [Plans](plans/bitbucket-pipelines-plans-pricing.yml) — reconciled
-- [Rate Limits](rate-limits/bitbucket-pipelines-rate-limits.yml) — reconciled
-- [FinOps](finops/bitbucket-pipelines-finops.yml) — reconciled, FOCUS-aligned
-
-## Plans (reconciled)
-- **Free** — up to 5 users, 50 build min/mo.
-- **Standard** — $3.65/user/mo, 2,500 min/mo.
-- **Premium** — $7.25/user/mo, 3,500 min/mo, advanced security.
-- **Add-on minutes** — 1,000-min pack at $10/mo on every tier.
-
-## Rate Limits (reconciled)
-- 60,000 req/h authenticated per workspace/app installation.
-- 1,000 req/h unauthenticated per IP.
-- Per-step build cap: 120 min.
-- 429 with `Retry-After`; `X-RateLimit-*` headers.
+- DevOps
+- CI/CD
+- Pipelines
+- Atlassian
+- Bitbucket
+- Hosted
+- Self-Hosted Runners
 
 ## Timestamps
+
 - **Created:** 2026-05-08
-- **Modified:** 2026-05-08
+- **Modified:** 2026-05-19
+
+## APIs
+
+### Bitbucket Cloud REST API v2.0 (Pipelines)
+
+The Pipelines slice of the Bitbucket Cloud REST API v2.0. Endpoint families include /repositories/{workspace}/{repo_slug}/pipelines/, /pipelines/{pipeline_uuid}/steps/, /pipelines_config, deployments, environments, schedules, ssh keys, variables, known hosts, runners and caches. OAuth 2.0, app passwords or workspace access tokens.
+
+- **Human URL:** [https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/](https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/)
+- **Base URL:** `https://api.bitbucket.org/2.0`
+
+#### Tags
+
+- REST
+- v2.0
+- Pipelines
+- Deployments
+- Runners
+
+#### Properties
+
+- [Documentation](https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/)
+- [API Reference](https://developer.atlassian.com/cloud/bitbucket/rest/intro/)
+- [OpenAPI](openapi/bitbucket-pipelines-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/bitbucket-pipelines.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/bitbucket-pipelines.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Open A P I Source](https://api.bitbucket.org/swagger.json)
+- [Authentication](https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication)
+
+## Common Properties
+
+- [Website](https://bitbucket.org/product/features/pipelines)
+- [Documentation](https://support.atlassian.com/bitbucket-cloud/docs/get-started-with-bitbucket-pipelines/)
+- [Pricing](https://www.atlassian.com/software/bitbucket/pricing)
+- [Git Hub](https://bitbucket.org/atlassian/atlassian-pipelines-pipes)
+- [Status Page](https://bitbucket.status.atlassian.com/)
+- [Plans](plans/bitbucket-pipelines-plans-pricing.yml)
+- [Rate Limits](rate-limits/bitbucket-pipelines-rate-limits.yml)
+- [Fin Ops](finops/bitbucket-pipelines-finops.yml)
 
 ## Maintainers
-- **Kin Lane** — kin@apievangelist.com
+
+**FN:** Kin Lane
+**Email:** kin@apievangelist.com
