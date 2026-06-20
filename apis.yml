@@ -6,7 +6,7 @@ description: >-
   Bitbucket Pipelines is Atlassian's built-in CI/CD service for Bitbucket Cloud, with cloud-hosted and self-hosted
   runners and YAML-defined pipelines. Pipelines is consumed via the Bitbucket Cloud REST API v2.0 under the /pipelines/
   resource family. Atlassian publishes a Swagger 2.0 specification for the full Bitbucket Cloud API.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - DevOps
   - CI/CD
@@ -26,7 +26,7 @@ apis:
       /repositories/{workspace}/{repo_slug}/pipelines/, /pipelines/{pipeline_uuid}/steps/, /pipelines_config,
       deployments, environments, schedules, ssh keys, variables, known hosts, runners and caches. OAuth 2.0, app
       passwords or workspace access tokens.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
     baseURL: https://api.bitbucket.org/2.0
     tags:
