@@ -47,6 +47,8 @@ apis:
       - type: Authentication
         url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 common:
+  - type: OAuthScopes
+    url: scopes/bitbucket-pipelines-scopes.yml
   - type: Website
     url: https://bitbucket.org/product/features/pipelines
   - type: Documentation
