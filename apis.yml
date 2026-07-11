@@ -47,6 +47,12 @@ apis:
       - type: Authentication
         url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 common:
+  - type: VulnerabilityDisclosure
+    url: security/bitbucket-pipelines-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/bitbucket-pipelines-domain-security.yml
+  - type: Authentication
+    url: authentication/bitbucket-pipelines-authentication.yml
   - type: OAuthScopes
     url: scopes/bitbucket-pipelines-scopes.yml
   - type: Website
