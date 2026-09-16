@@ -2,10 +2,10 @@ aid: bitbucket-pipelines
 url: https://raw.githubusercontent.com/api-evangelist/bitbucket-pipelines/refs/heads/main/apis.yml
 name: Bitbucket Pipelines
 kind: company
-description: >-
-  Bitbucket Pipelines is Atlassian's built-in CI/CD service for Bitbucket Cloud, with cloud-hosted and self-hosted
-  runners and YAML-defined pipelines. Pipelines is consumed via the Bitbucket Cloud REST API v2.0 under the /pipelines/
-  resource family. Atlassian publishes a Swagger 2.0 specification for the full Bitbucket Cloud API.
+description: Bitbucket Pipelines is Atlassian's built-in CI/CD service for Bitbucket Cloud, with cloud-hosted
+  and self-hosted runners and YAML-defined pipelines. Pipelines is consumed via the Bitbucket Cloud REST
+  API v2.0 under the /pipelines/ resource family. Atlassian publishes a Swagger 2.0 specification for
+  the full Bitbucket Cloud API.
 deliveryModel:
   model: saas
   open_source: false
@@ -29,29 +29,32 @@ accessModel:
   source:
   - plans
   - authentication
-  - {url: 'https://bitbucket.org/product/features/pipelines', status: 301, note: 'declared website redirects to https://www.atlassian.com/software/bitbucket/features/pipelines — a different registrable domain (bitbucket.org -> atlassian.com), possible rename or acquisition (probed 2026-09-03, roadmap#169)'}
+  - url: https://bitbucket.org/product/features/pipelines
+    status: 301
+    note: declared website redirects to https://www.atlassian.com/software/bitbucket/features/pipelines
+      — a different registrable domain (bitbucket.org -> atlassian.com), possible rename or acquisition
+      (probed 2026-09-03, roadmap#169)
   generated: '2026-07-22'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bitbucket-pipelines.png
 tags:
-  - DevOps
-  - CI/CD
-  - Pipelines
-  - Atlassian
-  - Bitbucket
-  - Hosted
-  - Self-Hosted Runners
-  - Developer Tools
+- DevOps
+- CI/CD
+- Pipelines
+- Atlassian
+- Bitbucket
+- Hosted
+- Self-Hosted Runners
+- Developer Tools
 created: '2026-05-08'
-modified: '2026-05-19'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: bitbucket-pipelines:bitbucket-pipelines-addon-api
   name: Bitbucket Pipelines Addon API
-  description: >-
-    The addon resource is intended to use used by Bitbucket Cloud Connect
+  description: 'The addon resource is intended to use used by Bitbucket Cloud Connect
 
-    Apps, and only supports JWT authentication.
+    Apps, and only supports JWT authentication.'
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -69,8 +72,7 @@ apis:
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-branch-restrictions-api
   name: Bitbucket Pipelines Branch restrictions API
-  description: >-
-    Repository owners and administrators can set branch management
+  description: 'Repository owners and administrators can set branch management
 
     rules on a repository that control what can be pushed by whom.
 
@@ -83,7 +85,7 @@ apis:
 
     * Prevent branch deletion
 
-    * Prevent history re-writes (Git only)
+    * Prevent history re-writes (Git only)'
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -101,8 +103,7 @@ apis:
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-branching-model-api
   name: Bitbucket Pipelines Branching model API
-  description: >-
-    The branching model resource is used to modify the branching model
+  description: 'The branching model resource is used to modify the branching model
 
     for a repository.
 
@@ -113,7 +114,7 @@ apis:
 
     you can ensure that branches are named consistently by configuring
 
-    which branch types to make available.
+    which branch types to make available.'
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -131,10 +132,9 @@ apis:
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-commit-statuses-api
   name: Bitbucket Pipelines Commit statuses API
-  description: >-
-    Commit statuses provide a way to tag commits with meta data,
+  description: 'Commit statuses provide a way to tag commits with meta data,
 
-    like automated build results.
+    like automated build results.'
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -152,10 +152,9 @@ apis:
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-commits-api
   name: Bitbucket Pipelines Commits API
-  description: >-
-    These are the repository's commits. They are paginated and returned in
+  description: 'These are the repository''s commits. They are paginated and returned in
 
-    reverse chronological order, similar to the output of git log.
+    reverse chronological order, similar to the output of git log.'
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -173,8 +172,7 @@ apis:
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-deployments-api
   name: Bitbucket Pipelines Deployments API
-  description: >-
-    Teams are deploying code faster than ever, thanks to continuous
+  description: 'Teams are deploying code faster than ever, thanks to continuous
 
     delivery practices and tools like Bitbucket Pipelines. Bitbucket
 
@@ -182,7 +180,7 @@ apis:
 
     environments and helps teams to track how far changes have
 
-    progressed in their deployment pipeline.
+    progressed in their deployment pipeline.'
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -238,22 +236,21 @@ apis:
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-issue-tracker-api
   name: Bitbucket Pipelines Issue tracker API
-  description: >-
-    The issue resources provide functionality for getting information on
+  description: 'The issue resources provide functionality for getting information on
 
     issues in an issue tracker, creating new issues, updating them and deleting
 
     them.
 
 
-    You can access public issues without authentication, but you can't gain access
+    You can access public issues without authentication, but you can''t gain access
 
-    to private repositories' issues. By authenticating, you will get the ability
+    to private repositories'' issues. By authenticating, you will get the ability
 
     to create issues, as well as access to updating data or deleting issues you
 
     have access to. Issue Tracker features are not supported for repositories in workspaces administered
-    through admin.atlassian.com.
+    through admin.atlassian.com.'
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -270,13 +267,12 @@ apis:
   - type: Authentication
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-pipelines-api
-  name: Bitbucket Pipelines Pipelines API
-  description: >-
-    Bitbucket Pipelines brings continuous delivery to Bitbucket
+  name: Bitbucket Pipelines API
+  description: 'Bitbucket Pipelines brings continuous delivery to Bitbucket
 
     Cloud, empowering teams with full branching to deployment
 
-    visibility and faster feedback loops.
+    visibility and faster feedback loops.'
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -294,10 +290,9 @@ apis:
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-projects-api
   name: Bitbucket Pipelines Projects API
-  description: >-
-    Bitbucket Cloud projects make it easier for teams to focus on
+  description: 'Bitbucket Cloud projects make it easier for teams to focus on
 
-    a goal, product, or process by organizing their repositories.
+    a goal, product, or process by organizing their repositories.'
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -337,14 +332,13 @@ apis:
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-pullrequests-api
   name: Bitbucket Pipelines Pullrequests API
-  description: >-
-    Pull requests are a feature that makes it easier for developers
+  description: 'Pull requests are a feature that makes it easier for developers
 
     to collaborate using Bitbucket. They provide a user-friendly web
 
     interface for discussing proposed changes before integrating them
 
-    into the official project.
+    into the official project.'
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -364,15 +358,10 @@ apis:
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-refs-api
   name: Bitbucket Pipelines Refs API
-  description: >-
-    The refs resource allows you access branches and tags in a repository.
-
-    By default, results will be in the order the underlying source control
-
-    system returns them and identical to the ordering one sees when running
-
-    "$ git show-ref". Note that this follows simple lexical ordering of the
-     ref names.
+  description: "The refs resource allows you access branches and tags in a repository.\nBy default, results\
+    \ will be in the order the underlying source control\nsystem returns them and identical to the ordering\
+    \ one sees when running\n\"$ git show-ref\". Note that this follows simple lexical ordering of the\n\
+    \ ref names."
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -390,8 +379,7 @@ apis:
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-reports-api
   name: Bitbucket Pipelines Reports API
-  description: >-
-    Code insights provides reports, annotations, and metrics to help you
+  description: 'Code insights provides reports, annotations, and metrics to help you
 
     and your team improve code quality in pull requests throughout the code
 
@@ -399,7 +387,7 @@ apis:
 
     reports, security scan results, artifact links, unit tests, and build
 
-    status.
+    status.'
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -417,14 +405,13 @@ apis:
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-repositories-api
   name: Bitbucket Pipelines Repositories API
-  description: >-
-    A Git repository is a virtual storage of your project. It
+  description: 'A Git repository is a virtual storage of your project. It
 
     allows you to save versions of your code, which you can access
 
     when needed. The repo resource allows you to access public repos,
 
-    or repos that belong to a specific workspace.
+    or repos that belong to a specific workspace.'
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -460,20 +447,11 @@ apis:
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-snippets-api
   name: Bitbucket Pipelines Snippets API
-  description: >-
-    Snippets allow you share code segments or files with yourself, members of
-
-    your workspace, or the world.
-
-
-    Like pull requests, repositories and workspaces, the full set of snippets
-
-    is defined by what the current user has access to. This includes all
-
-    snippets owned by any of the workspaces the user is a member of, or
-
-    snippets by other users that the current user is either watching or has
-     collaborated on (for instance by commenting on it).
+  description: "Snippets allow you share code segments or files with yourself, members of\nyour workspace,\
+    \ or the world.\n\nLike pull requests, repositories and workspaces, the full set of snippets\nis defined\
+    \ by what the current user has access to. This includes all\nsnippets owned by any of the workspaces\
+    \ the user is a member of, or\nsnippets by other users that the current user is either watching or\
+    \ has\n collaborated on (for instance by commenting on it)."
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -491,9 +469,8 @@ apis:
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-source-api
   name: Bitbucket Pipelines Source API
-  description: >-
-    Browse the source code in the repository and
-                                  create new commits by uploading.
+  description: "Browse the source code in the repository and\n                              create new\
+    \ commits by uploading."
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -529,12 +506,11 @@ apis:
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-users-api
   name: Bitbucket Pipelines Users API
-  description: >-
-    The users resource allows you to access public information
+  description: 'The users resource allows you to access public information
 
     associated with a user account. Most resources in the users
 
-    endpoint have been deprecated in favor of workspaces.
+    endpoint have been deprecated in favor of workspaces.'
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -554,8 +530,7 @@ apis:
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-webhooks-api
   name: Bitbucket Pipelines Webhooks API
-  description: >-
-    Webhooks provide a way to configure Bitbucket Cloud to make requests to
+  description: 'Webhooks provide a way to configure Bitbucket Cloud to make requests to
 
     your server (or another external service) whenever certain events occur in
 
@@ -600,7 +575,7 @@ apis:
 
     * Every time a user pushes commits or creates a pull request, you may want to
 
-    display a notification in your application.
+    display a notification in your application.'
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -620,14 +595,13 @@ apis:
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-workspaces-api
   name: Bitbucket Pipelines Workspaces API
-  description: >-
-    A workspace is where you create repositories, collaborate on
+  description: 'A workspace is where you create repositories, collaborate on
 
     your code, and organize different streams of work in your Bitbucket
 
     Cloud account. Workspaces replace the use of teams and users in API
 
-    calls.
+    calls.'
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
   tags:
@@ -644,34 +618,34 @@ apis:
   - type: Authentication
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 common:
-  - type: AgenticAccess
-    url: agentic-access/bitbucket-pipelines-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/bitbucket-pipelines-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/bitbucket-pipelines-domain-security.yml
-  - type: Authentication
-    url: authentication/bitbucket-pipelines-authentication.yml
-  - type: OAuthScopes
-    url: scopes/bitbucket-pipelines-scopes.yml
-  - type: Website
-    url: https://bitbucket.org/product/features/pipelines
-  - type: Documentation
-    url: https://support.atlassian.com/bitbucket-cloud/docs/get-started-with-bitbucket-pipelines/
-  - type: Pricing
-    url: https://www.atlassian.com/software/bitbucket/pricing
-  - type: GitHub
-    url: https://bitbucket.org/atlassian/atlassian-pipelines-pipes
-  - type: StatusPage
-    url: https://bitbucket.status.atlassian.com/
-  - type: Plans
-    url: plans/bitbucket-pipelines-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/bitbucket-pipelines-rate-limits.yml
-  - type: FinOps
-    url: finops/bitbucket-pipelines-finops.yml
+- type: AgenticAccess
+  url: agentic-access/bitbucket-pipelines-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/bitbucket-pipelines-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/bitbucket-pipelines-domain-security.yml
+- type: Authentication
+  url: authentication/bitbucket-pipelines-authentication.yml
+- type: OAuthScopes
+  url: scopes/bitbucket-pipelines-scopes.yml
+- type: Website
+  url: https://bitbucket.org/product/features/pipelines
+- type: Documentation
+  url: https://support.atlassian.com/bitbucket-cloud/docs/get-started-with-bitbucket-pipelines/
+- type: Pricing
+  url: https://www.atlassian.com/software/bitbucket/pricing
+- type: GitHub
+  url: https://bitbucket.org/atlassian/atlassian-pipelines-pipes
+- type: StatusPage
+  url: https://bitbucket.status.atlassian.com/
+- type: Plans
+  url: plans/bitbucket-pipelines-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/bitbucket-pipelines-rate-limits.yml
+- type: FinOps
+  url: finops/bitbucket-pipelines-finops.yml
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
 x-parent: bitbucket
 x-relationship: product
