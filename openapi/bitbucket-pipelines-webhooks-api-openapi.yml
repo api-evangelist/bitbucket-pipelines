@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bitbucket Addon Webhooks API
+  title: Bitbucket Webhooks API
   description: Code against the Bitbucket API to automate simple tasks, embed Bitbucket data into your own site, build mobile or desktop apps, or even add custom UI add-ons into Bitbucket itself using the Connect framework.
   version: '2.0'
   termsOfService: https://www.atlassian.com/legal/customer-agreement
@@ -16,50 +16,7 @@ tags:
 
     your server (or another external service) whenever certain events occur in
 
-    Bitbucket Cloud.
-
-
-    A webhook consists of:
-
-
-    * A subject -- The resource that generates the events. Currently, this resource
-
-    is the repository, user account, or team where you create the webhook.
-
-    * One or more event -- The default event is a repository push, but you can
-
-    select multiple events that can trigger the webhook.
-
-    * A URL -- The endpoint where you want Bitbucket to send the event payloads
-
-    when a matching event happens.
-
-
-    There are two parts to getting a webhook to work: creating the webhook and
-
-    triggering the webhook. After you create a webhook for an event, every time
-
-    that event occurs, Bitbucket sends a payload request that describes the event
-
-    to the specified URL. Thus, you can think of webhooks as a kind of
-
-    notification system.
-
-
-    Use webhooks to integrate applications with Bitbucket Cloud. The following
-
-    use cases provides examples of when you would want to use webhooks:
-
-
-    * Every time a user pushes commits in a repository, you may want to notify
-
-    your CI server to start a build.
-
-    * Every time a user pushes commits or creates a pull request, you may want to
-
-    display a notification in your application.
-
-    '
+    Bitbucket Cloud.'
 paths:
   /hook_events:
     parameters: []
@@ -102,6 +59,8 @@ paths:
       - oauth2: []
       - basic: []
       - api_key: []
+      operationId: getHookEvents
+      x-operation-id-source: derived
   /hook_events/{subject_type}:
     parameters:
     - name: subject_type
@@ -122,7 +81,7 @@ paths:
 
         **The team and user webhooks are deprecated, and you should use workspace instead.
 
-        For more information, see [the announcement](https://developer.atlassian.com/cloud/bitbucket/bitbucket-api-teams-deprecation/).**
+        For more information, see the announcement.**
 
 
         This is public data that does not require any scopes or authentication.
@@ -170,6 +129,8 @@ paths:
       - oauth2: []
       - basic: []
       - api_key: []
+      operationId: getHookEventsBySubjectType
+      x-operation-id-source: derived
   /repositories/{workspace}/{repo_slug}/hooks:
     parameters:
     - name: repo_slug
@@ -228,10 +189,71 @@ paths:
         - read:webhook:bitbucket
       x-atlassian-auth-types:
       - api-token
+      operationId: getRepositoriesByWorkspaceByRepoSlugHooks
+      x-operation-id-source: derived
     post:
       tags:
       - Webhooks
-      description: "Creates a new webhook on the specified repository.\n\nExample:\n\n```\n$ curl -X POST -u credentials -H 'Content-Type: application/json'\n  https://api.bitbucket.org/2.0/repositories/my-workspace/my-repo-slug/hooks\n  -d '\n    {\n      \"description\": \"Webhook Description\",\n      \"url\": \"https://example.com/\",\n      \"active\": true,\n      \"secret\": \"this is a really bad secret\",\n      \"events\": [\n        \"repo:push\",\n        \"issue:created\",\n        \"issue:updated\"\n      ]\n    }'\n```\n\nWhen the `secret` is provided it will be used as the key to generate a HMAC\ndigest value sent in the `X-Hub-Signature` header at delivery time. Passing\na `null` or empty `secret` or not passing a `secret` will leave the webhook's\nsecret unset. Bitbucket only generates the `X-Hub-Signature` when the webhook's\nsecret is set.\n\nNote that this call requires the webhook scope, as well as any scope\nthat applies to the events that the webhook subscribes to. In the\nexample above that means: `webhook`, `repository` and `issue`.\n\nAlso note that the `url` must properly resolve and cannot be an\ninternal, non-routed address."
+      description: 'Creates a new webhook on the specified repository.
+
+
+        Example:
+
+
+        ```
+
+        $ curl -X POST -u credentials -H ''Content-Type: application/json''
+
+        https://api.bitbucket.org/2.0/repositories/my-workspace/my-repo-slug/hooks
+
+        -d ''
+
+        {
+
+        "description": "Webhook Description",
+
+        "url": "https://example.com/",
+
+        "active": true,
+
+        "secret": "this is a really bad secret",
+
+        "events": [
+
+        "repo:push",
+
+        "issue:created",
+
+        "issue:updated"
+
+        ]
+
+        }''
+
+        ```
+
+
+        When the `secret` is provided it will be used as the key to generate a HMAC
+
+        digest value sent in the `X-Hub-Signature` header at delivery time. Passing
+
+        a `null` or empty `secret` or not passing a `secret` will leave the webhook''s
+
+        secret unset. Bitbucket only generates the `X-Hub-Signature` when the webhook''s
+
+        secret is set.
+
+
+        Note that this call requires the webhook scope, as well as any scope
+
+        that applies to the events that the webhook subscribes to. In the
+
+        example above that means: `webhook`, `repository` and `issue`.
+
+
+        Also note that the `url` must properly resolve and cannot be an
+
+        internal, non-routed address.'
       summary: Create a webhook for a repository
       responses:
         '201':
@@ -270,6 +292,8 @@ paths:
         - write:webhook:bitbucket
       x-atlassian-auth-types:
       - api-token
+      operationId: postRepositoriesByWorkspaceByRepoSlugHooks
+      x-operation-id-source: derived
   /repositories/{workspace}/{repo_slug}/hooks/{uid}:
     parameters:
     - name: repo_slug
@@ -332,6 +356,8 @@ paths:
         - delete:webhook:bitbucket
       x-atlassian-auth-types:
       - api-token
+      operationId: deleteRepositoriesByWorkspaceByRepoSlugHooksByUid
+      x-operation-id-source: derived
     get:
       tags:
       - Webhooks
@@ -364,6 +390,8 @@ paths:
         - read:webhook:bitbucket
       x-atlassian-auth-types:
       - api-token
+      operationId: getRepositoriesByWorkspaceByRepoSlugHooksByUid
+      x-operation-id-source: derived
     put:
       tags:
       - Webhooks
@@ -431,6 +459,8 @@ paths:
         - write:webhook:bitbucket
       x-atlassian-auth-types:
       - api-token
+      operationId: putRepositoriesByWorkspaceByRepoSlugHooksByUid
+      x-operation-id-source: derived
   /workspaces/{workspace}/hooks:
     parameters:
     - name: workspace
@@ -479,10 +509,77 @@ paths:
         - read:webhook:bitbucket
       x-atlassian-auth-types:
       - api-token
+      operationId: getWorkspacesByWorkspaceHooks
+      x-operation-id-source: derived
     post:
       tags:
       - Webhooks
-      description: "Creates a new webhook on the specified workspace.\n\nWorkspace webhooks are fired for events from all repositories contained\nby that workspace.\n\nExample:\n\n```\n$ curl -X POST -u credentials -H 'Content-Type: application/json'\n  https://api.bitbucket.org/2.0/workspaces/my-workspace/hooks\n  -d '\n    {\n      \"description\": \"Webhook Description\",\n      \"url\": \"https://example.com/\",\n      \"active\": true,\n      \"secret\": \"this is a really bad secret\",\n      \"events\": [\n        \"repo:push\",\n        \"issue:created\",\n        \"issue:updated\"\n      ]\n    }'\n```\n\nWhen the `secret` is provided it will be used as the key to generate a HMAC\ndigest value sent in the `X-Hub-Signature` header at delivery time. Passing\na `null` or empty `secret` or not passing a `secret` will leave the webhook's\nsecret unset. Bitbucket only generates the `X-Hub-Signature` when the webhook's\nsecret is set.\n\nThis call requires the webhook scope, as well as any scope\nthat applies to the events that the webhook subscribes to. In the\nexample above that means: `webhook`, `repository` and `issue`.\n\nThe `url` must properly resolve and cannot be an internal, non-routed address.\n\nOnly workspace owners can install webhooks on workspaces."
+      description: 'Creates a new webhook on the specified workspace.
+
+
+        Workspace webhooks are fired for events from all repositories contained
+
+        by that workspace.
+
+
+        Example:
+
+
+        ```
+
+        $ curl -X POST -u credentials -H ''Content-Type: application/json''
+
+        https://api.bitbucket.org/2.0/workspaces/my-workspace/hooks
+
+        -d ''
+
+        {
+
+        "description": "Webhook Description",
+
+        "url": "https://example.com/",
+
+        "active": true,
+
+        "secret": "this is a really bad secret",
+
+        "events": [
+
+        "repo:push",
+
+        "issue:created",
+
+        "issue:updated"
+
+        ]
+
+        }''
+
+        ```
+
+
+        When the `secret` is provided it will be used as the key to generate a HMAC
+
+        digest value sent in the `X-Hub-Signature` header at delivery time. Passing
+
+        a `null` or empty `secret` or not passing a `secret` will leave the webhook''s
+
+        secret unset. Bitbucket only generates the `X-Hub-Signature` when the webhook''s
+
+        secret is set.
+
+
+        This call requires the webhook scope, as well as any scope
+
+        that applies to the events that the webhook subscribes to. In the
+
+        example above that means: `webhook`, `repository` and `issue`.
+
+
+        The `url` must properly resolve and cannot be an internal, non-routed address.
+
+
+        Only workspace owners can install webhooks on workspaces.'
       summary: Create a webhook for a workspace
       responses:
         '201':
@@ -521,6 +618,8 @@ paths:
         - write:webhook:bitbucket
       x-atlassian-auth-types:
       - api-token
+      operationId: postWorkspacesByWorkspaceHooks
+      x-operation-id-source: derived
   /workspaces/{workspace}/hooks/{uid}:
     parameters:
     - name: uid
@@ -571,6 +670,8 @@ paths:
         - delete:webhook:bitbucket
       x-atlassian-auth-types:
       - api-token
+      operationId: deleteWorkspacesByWorkspaceHooksByUid
+      x-operation-id-source: derived
     get:
       tags:
       - Webhooks
@@ -603,6 +704,8 @@ paths:
         - read:webhook:bitbucket
       x-atlassian-auth-types:
       - api-token
+      operationId: getWorkspacesByWorkspaceHooksByUid
+      x-operation-id-source: derived
     put:
       tags:
       - Webhooks
@@ -670,19 +773,10 @@ paths:
         - write:webhook:bitbucket
       x-atlassian-auth-types:
       - api-token
+      operationId: putWorkspacesByWorkspaceHooksByUid
+      x-operation-id-source: derived
 components:
   schemas:
-    object:
-      type: object
-      description: Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.
-      properties:
-        type:
-          type: string
-      required:
-      - type
-      additionalProperties: true
-      discriminator:
-        propertyName: type
     hook_event:
       type: object
       title: Hook Event
@@ -730,6 +824,125 @@ components:
         description:
           type: string
           description: More detailed description of the webhook event type.
+      additionalProperties: false
+    webhook_subscription:
+      allOf:
+      - $ref: '#/components/schemas/object'
+      - type: object
+        title: Webhook Subscription
+        description: A Webhook subscription.
+        properties:
+          uuid:
+            type: string
+            description: The webhook's id
+          url:
+            type: string
+            description: The URL events get delivered to.
+            format: uri
+          description:
+            type: string
+            description: A user-defined description of the webhook.
+          subject_type:
+            type: string
+            description: The type of entity. Set to either `repository` or `workspace` based on where the subscription is defined.
+            enum:
+            - repository
+            - workspace
+          subject:
+            $ref: '#/components/schemas/object'
+          active:
+            type: boolean
+          created_at:
+            type: string
+            format: date-time
+          events:
+            type: array
+            description: The events this webhook is subscribed to.
+            items:
+              type: string
+              enum:
+              - issue:comment_created
+              - issue:created
+              - issue:updated
+              - pipeline:span_created
+              - project:updated
+              - pullrequest:approved
+              - pullrequest:changes_request_created
+              - pullrequest:changes_request_removed
+              - pullrequest:comment_created
+              - pullrequest:comment_deleted
+              - pullrequest:comment_reopened
+              - pullrequest:comment_resolved
+              - pullrequest:comment_updated
+              - pullrequest:created
+              - pullrequest:fulfilled
+              - pullrequest:push
+              - pullrequest:rejected
+              - pullrequest:unapproved
+              - pullrequest:updated
+              - repo:commit_comment_created
+              - repo:commit_status_created
+              - repo:commit_status_updated
+              - repo:created
+              - repo:deleted
+              - repo:fork
+              - repo:imported
+              - repo:push
+              - repo:transfer
+              - repo:updated
+            minItems: 1
+            uniqueItems: true
+          secret_set:
+            type: boolean
+            description: Indicates whether or not the hook has an associated secret. It is not possible to see the hook's secret. This field is ignored during updates.
+          secret:
+            type: string
+            description: The secret to associate with the hook. The secret is never returned via the API. As such, this field is only used during updates. The secret can be set to `null` or "" to remove the secret (or create a hook with no secret). Leaving out the secret field during updates will leave the secret unchanged. Leaving out the secret during creation will create a hook with no secret.
+            minLength: 0
+            maxLength: 128
+        additionalProperties: true
+    object:
+      type: object
+      description: Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.
+      properties:
+        type:
+          type: string
+      required:
+      - type
+      additionalProperties: true
+      discriminator:
+        propertyName: type
+    paginated_webhook_subscriptions:
+      type: object
+      title: Paginated Webhook Subscriptions
+      description: A paginated list of webhook subscriptions
+      properties:
+        size:
+          type: integer
+          description: Total number of objects in the response. This is an optional element that is not provided in all responses, as it can be expensive to compute.
+          minimum: 0
+        page:
+          type: integer
+          description: Page number of the current results. This is an optional element that is not provided in all responses.
+          minimum: 1
+        pagelen:
+          type: integer
+          description: Current number of objects on the existing page. The default value is 10 with 100 being the maximum allowed value. Individual APIs may enforce different values.
+          minimum: 1
+        next:
+          type: string
+          description: Link to the next page if it exists. The last page of a collection does not have this value. Use this link to navigate the result set and refrain from constructing your own URLs.
+          format: uri
+        previous:
+          type: string
+          description: Link to previous page if it exists. A collections first page does not have this value. This is an optional element that is not provided in all responses. Some result sets strictly support forward navigation and never provide previous links. Clients must anticipate that backwards navigation is not always available. Use this link to navigate the result set and refrain from constructing your own URLs.
+          format: uri
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/webhook_subscription'
+          minItems: 0
+          uniqueItems: true
       additionalProperties: false
     paginated_hook_events:
       type: object
@@ -824,114 +1037,6 @@ components:
               additionalProperties: false
           additionalProperties: false
       additionalProperties: false
-    paginated_webhook_subscriptions:
-      type: object
-      title: Paginated Webhook Subscriptions
-      description: A paginated list of webhook subscriptions
-      properties:
-        size:
-          type: integer
-          description: Total number of objects in the response. This is an optional element that is not provided in all responses, as it can be expensive to compute.
-          minimum: 0
-        page:
-          type: integer
-          description: Page number of the current results. This is an optional element that is not provided in all responses.
-          minimum: 1
-        pagelen:
-          type: integer
-          description: Current number of objects on the existing page. The default value is 10 with 100 being the maximum allowed value. Individual APIs may enforce different values.
-          minimum: 1
-        next:
-          type: string
-          description: Link to the next page if it exists. The last page of a collection does not have this value. Use this link to navigate the result set and refrain from constructing your own URLs.
-          format: uri
-        previous:
-          type: string
-          description: Link to previous page if it exists. A collections first page does not have this value. This is an optional element that is not provided in all responses. Some result sets strictly support forward navigation and never provide previous links. Clients must anticipate that backwards navigation is not always available. Use this link to navigate the result set and refrain from constructing your own URLs.
-          format: uri
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/webhook_subscription'
-          minItems: 0
-          uniqueItems: true
-      additionalProperties: false
-    webhook_subscription:
-      allOf:
-      - $ref: '#/components/schemas/object'
-      - type: object
-        title: Webhook Subscription
-        description: A Webhook subscription.
-        properties:
-          uuid:
-            type: string
-            description: The webhook's id
-          url:
-            type: string
-            description: The URL events get delivered to.
-            format: uri
-          description:
-            type: string
-            description: A user-defined description of the webhook.
-          subject_type:
-            type: string
-            description: The type of entity. Set to either `repository` or `workspace` based on where the subscription is defined.
-            enum:
-            - repository
-            - workspace
-          subject:
-            $ref: '#/components/schemas/object'
-          active:
-            type: boolean
-          created_at:
-            type: string
-            format: date-time
-          events:
-            type: array
-            description: The events this webhook is subscribed to.
-            items:
-              type: string
-              enum:
-              - issue:comment_created
-              - issue:created
-              - issue:updated
-              - pipeline:span_created
-              - project:updated
-              - pullrequest:approved
-              - pullrequest:changes_request_created
-              - pullrequest:changes_request_removed
-              - pullrequest:comment_created
-              - pullrequest:comment_deleted
-              - pullrequest:comment_reopened
-              - pullrequest:comment_resolved
-              - pullrequest:comment_updated
-              - pullrequest:created
-              - pullrequest:fulfilled
-              - pullrequest:push
-              - pullrequest:rejected
-              - pullrequest:unapproved
-              - pullrequest:updated
-              - repo:commit_comment_created
-              - repo:commit_status_created
-              - repo:commit_status_updated
-              - repo:created
-              - repo:deleted
-              - repo:fork
-              - repo:imported
-              - repo:push
-              - repo:transfer
-              - repo:updated
-            minItems: 1
-            uniqueItems: true
-          secret_set:
-            type: boolean
-            description: Indicates whether or not the hook has an associated secret. It is not possible to see the hook's secret. This field is ignored during updates.
-          secret:
-            type: string
-            description: The secret to associate with the hook. The secret is never returned via the API. As such, this field is only used during updates. The secret can be set to `null` or "" to remove the secret (or create a hook with no secret). Leaving out the secret field during updates will leave the secret unchanged. Leaving out the secret during creation will create a hook with no secret.
-            minLength: 0
-            maxLength: 128
-        additionalProperties: true
   securitySchemes:
     basic:
       type: http

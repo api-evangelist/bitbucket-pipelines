@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bitbucket Addon Users API
+  title: Bitbucket Users API
   description: Code against the Bitbucket API to automate simple tasks, embed Bitbucket data into your own site, build mobile or desktop apps, or even add custom UI add-ons into Bitbucket itself using the Connect framework.
   version: '2.0'
   termsOfService: https://www.atlassian.com/legal/customer-agreement
@@ -16,9 +16,7 @@ tags:
 
     associated with a user account. Most resources in the users
 
-    endpoint have been deprecated in favor of workspaces.
-
-    '
+    endpoint have been deprecated in favor of workspaces.'
 paths:
   /user:
     parameters: []
@@ -52,6 +50,8 @@ paths:
         - read:user:bitbucket
       x-atlassian-auth-types:
       - api-token
+      operationId: getUser
+      x-operation-id-source: derived
   /user/emails:
     parameters: []
     get:
@@ -80,6 +80,8 @@ paths:
         - read:user:bitbucket
       x-atlassian-auth-types:
       - api-token
+      operationId: getUserEmails
+      x-operation-id-source: derived
   /user/emails/{email}:
     parameters:
     - name: email
@@ -119,6 +121,8 @@ paths:
         - read:user:bitbucket
       x-atlassian-auth-types:
       - api-token
+      operationId: getUserEmailsByEmail
+      x-operation-id-source: derived
   /users/{selected_user}:
     parameters:
     - name: selected_user
@@ -144,7 +148,7 @@ paths:
 
         Note that the user object returned by this operation is changing significantly, due to privacy changes.
 
-        See the [announcement](https://developer.atlassian.com/cloud/bitbucket/bitbucket-api-changes-gdpr/#changes-to-bitbucket-user-objects) for details.'
+        See the announcement for details.'
       summary: Get a user
       responses:
         '200':
@@ -171,36 +175,18 @@ paths:
       x-atlassian-auth-types:
       - forge-oauth2
       - api-token
+      operationId: getUsersBySelectedUser
+      x-operation-id-source: derived
 components:
   schemas:
-    object:
+    account_links:
       type: object
-      description: Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.
+      title: Account Links
+      description: Links related to an Account.
       properties:
-        type:
-          type: string
-      required:
-      - type
+        avatar:
+          $ref: '#/components/schemas/link'
       additionalProperties: true
-      discriminator:
-        propertyName: type
-    account:
-      allOf:
-      - $ref: '#/components/schemas/object'
-      - type: object
-        title: Account
-        description: An account object.
-        properties:
-          links:
-            $ref: '#/components/schemas/account_links'
-          created_on:
-            type: string
-            format: date-time
-          display_name:
-            type: string
-          uuid:
-            type: string
-        additionalProperties: true
     link:
       type: object
       title: Link
@@ -212,14 +198,17 @@ components:
         name:
           type: string
       additionalProperties: false
-    account_links:
+    object:
       type: object
-      title: Account Links
-      description: Links related to an Account.
+      description: Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.
       properties:
-        avatar:
-          $ref: '#/components/schemas/link'
+        type:
+          type: string
+      required:
+      - type
       additionalProperties: true
+      discriminator:
+        propertyName: type
     error:
       type: object
       title: Error
@@ -245,6 +234,23 @@ components:
       required:
       - type
       additionalProperties: true
+    account:
+      allOf:
+      - $ref: '#/components/schemas/object'
+      - type: object
+        title: Account
+        description: An account object.
+        properties:
+          links:
+            $ref: '#/components/schemas/account_links'
+          created_on:
+            type: string
+            format: date-time
+          display_name:
+            type: string
+          uuid:
+            type: string
+        additionalProperties: true
   securitySchemes:
     basic:
       type: http
