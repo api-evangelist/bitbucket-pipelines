@@ -320,7 +320,7 @@ apis:
   - type: Authentication
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 - aid: bitbucket-pipelines:bitbucket-pipelines-properties-api
-  name: Bitbucket Pipelines properties API
+  name: Bitbucket Pipelines Properties API
   description: The properties API from Bitbucket Pipelines — 4 operation(s) for properties.
   humanURL: https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/
   baseURL: https://api.bitbucket.org/2.0
