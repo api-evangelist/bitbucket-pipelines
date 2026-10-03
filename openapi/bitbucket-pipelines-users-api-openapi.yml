@@ -204,25 +204,6 @@ components:
       required:
       - type
       additionalProperties: true
-    account_links:
-      type: object
-      title: Account Links
-      description: Links related to an Account.
-      properties:
-        avatar:
-          $ref: '#/components/schemas/link'
-      additionalProperties: true
-    link:
-      type: object
-      title: Link
-      description: A link to a resource related to this object.
-      properties:
-        href:
-          type: string
-          format: uri
-        name:
-          type: string
-      additionalProperties: false
     object:
       type: object
       description: Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.
@@ -251,6 +232,25 @@ components:
           uuid:
             type: string
         additionalProperties: true
+    link:
+      type: object
+      title: Link
+      description: A link to a resource related to this object.
+      properties:
+        href:
+          type: string
+          format: uri
+        name:
+          type: string
+      additionalProperties: false
+    account_links:
+      type: object
+      title: Account Links
+      description: Links related to an Account.
+      properties:
+        avatar:
+          $ref: '#/components/schemas/link'
+      additionalProperties: true
   securitySchemes:
     basic:
       type: http
