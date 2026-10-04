@@ -179,6 +179,25 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    account_links:
+      type: object
+      title: Account Links
+      description: Links related to an Account.
+      properties:
+        avatar:
+          $ref: '#/components/schemas/link'
+      additionalProperties: true
+    object:
+      type: object
+      description: Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.
+      properties:
+        type:
+          type: string
+      required:
+      - type
+      additionalProperties: true
+      discriminator:
+        propertyName: type
     error:
       type: object
       title: Error
@@ -204,17 +223,17 @@ components:
       required:
       - type
       additionalProperties: true
-    object:
+    link:
       type: object
-      description: Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.
+      title: Link
+      description: A link to a resource related to this object.
       properties:
-        type:
+        href:
           type: string
-      required:
-      - type
-      additionalProperties: true
-      discriminator:
-        propertyName: type
+          format: uri
+        name:
+          type: string
+      additionalProperties: false
     account:
       allOf:
       - $ref: '#/components/schemas/object'
@@ -232,25 +251,6 @@ components:
           uuid:
             type: string
         additionalProperties: true
-    link:
-      type: object
-      title: Link
-      description: A link to a resource related to this object.
-      properties:
-        href:
-          type: string
-          format: uri
-        name:
-          type: string
-      additionalProperties: false
-    account_links:
-      type: object
-      title: Account Links
-      description: Links related to an Account.
-      properties:
-        avatar:
-          $ref: '#/components/schemas/link'
-      additionalProperties: true
   securitySchemes:
     basic:
       type: http
