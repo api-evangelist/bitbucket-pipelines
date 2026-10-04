@@ -1,0 +1,128 @@
+slug: bitbucket-pipelines
+provider: Bitbucket Pipelines
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 11
+edges:
+- tag: Pull Requests
+  spec_file: bitbucket-pipelines-pull-requests-api-openapi.yml
+  capability_id: BC-4200.40
+  capability_id_l1: BC-4200
+  capability_name: Software Construction Management
+  confidence: 0.9
+  evidence: POST /repositories/{workspace}/{repo_slug}/pullrequests  Create a pull request; GET .../pullrequests/{pull_request_id}/activity  List
+    a pull request activity log
+  reason: Pull request creation, review, approval, comments, tasks and merge are exactly the code-review
+    and source-control discipline described by Software Construction Management.
+- tag: Pipelines
+  spec_file: bitbucket-pipelines-pipelines-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.85
+  evidence: POST /repositories/{workspace}/{repo_slug}/pipelines  createPipelineForRepository  Run a pipeline;
+    GET /pipelines-config/runners  Get repository runners
+  reason: Operations run and configure CI pipelines, runners, caches and deployment environment variables
+    — build pipeline management, i.e. Continuous Integration Management within software release & deployment.
+- tag: Commits
+  spec_file: bitbucket-pipelines-commits-api-openapi.yml
+  capability_id: BC-4200.40
+  capability_id_l1: BC-4200
+  capability_name: Software Construction Management
+  confidence: 0.8
+  evidence: '"Get a commit", "Approve a commit", "Create comment for a commit", schema "commit_comment"'
+  reason: Commits, commit approval and commit comments are source control and code review activities —
+    the core of Software Construction Management. The embedded code-insight reports add a quality flavour
+    but the dominant surface is commit/review.
+- tag: Deployments
+  spec_file: bitbucket-pipelines-deployments-api-openapi.yml
+  capability_id: BC-4210
+  capability_id_l1: BC-4210
+  capability_name: Software Release & Deployment Management
+  confidence: 0.8
+  evidence: '"List deployments", "Create an environment", "List repository deploy keys", schemas "deployment_environment",
+    "paginated_deployments"'
+  reason: 'Clearly software release and deployment: deployments to environments plus deploy keys. Held
+    at L1 because the operations straddle Environment Management and Deployment Orchestration with no
+    single dominant L2.'
+- tag: Refs
+  spec_file: bitbucket-pipelines-refs-api-openapi.yml
+  capability_id: BC-4200.40
+  capability_id_l1: BC-4200
+  capability_name: Software Construction Management
+  confidence: 0.8
+  evidence: GET /repositories/{workspace}/{repo_slug}/refs  List branches and tags; POST /refs/branches  Create
+    a branch
+  reason: Branch and tag lifecycle in a git repository is source-control practice under Software Construction
+    Management. Tagging also touches release versioning (BC-4210.30) but the surface is repository refs,
+    not release orchestration.
+- tag: Repositories
+  spec_file: bitbucket-pipelines-repositories-api-openapi.yml
+  capability_id: BC-4200.40
+  capability_id_l1: BC-4200
+  capability_name: Software Construction Management
+  confidence: 0.8
+  evidence: POST /repositories/{workspace}/{repo_slug}  Create a repository; POST .../forks  Fork a repository
+  reason: Creation, forking, permissioning and webhook configuration of source repositories is the source-control
+    element of Software Construction Management.
+- tag: Source
+  spec_file: bitbucket-pipelines-source-api-openapi.yml
+  capability_id: BC-4200.40
+  capability_id_l1: BC-4200
+  capability_name: Software Construction Management
+  confidence: 0.8
+  evidence: POST /repositories/{workspace}/{repo_slug}/src  Create a commit by uploading a file; GET /src/{commit}/{path}  Get
+    file or directory contents
+  reason: Reading repository file trees and creating commits is direct source-control manipulation, i.e.
+    Software Construction Management.
+- tag: Webhooks
+  spec_file: bitbucket-pipelines-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.8
+  evidence: POST /repositories/{workspace}/{repo_slug}/hooks  Create a webhook for a repository; GET /hook_events/{subject_type}  List
+    subscribable webhook types; schema webhook_subscription
+  reason: Full CRUD lifecycle over outbound webhook subscriptions plus discovery of subscribable event
+    types and a webhook_subscription schema — this is precisely outbound event-subscription lifecycle
+    management exposed to integrators of the platform.
+- tag: Branch Restrictions
+  spec_file: bitbucket-pipelines-branch-restrictions-api-openapi.yml
+  capability_id: BC-4200.40
+  capability_id_l1: BC-4200
+  capability_name: Software Construction Management
+  confidence: 0.75
+  evidence: '"Create a branch restriction rule", schema "branchrestriction" on /repositories/{workspace}/{repo_slug}/branch-restrictions'
+  reason: 'Branch restriction rules govern who may push/merge to repository branches — a source-control
+    and code-review discipline, which is Software Construction Management. Not production change authorisation:
+    the object is a VCS branch rule, not a deployment gate.'
+- tag: Issue Tracker
+  spec_file: bitbucket-pipelines-issue-tracker-api-openapi.yml
+  capability_id: BC-4200
+  capability_id_l1: BC-4200
+  capability_name: Software Product Engineering Management
+  confidence: 0.75
+  evidence: 'POST /repositories/{workspace}/{repo_slug}/issues  Create an issue; schemas: paginated_milestones,
+    component, version, issue'
+  reason: 'Repository issue tracking with components, milestones and versions is software product engineering
+    work — it sits between backlog stewardship (BC-4200.10) and defect management (BC-4200.50), so only
+    the L1 is asserted. Not IT Service Management incidents: these are repository-scoped development issues.'
+- tag: Commit Statuses
+  spec_file: bitbucket-pipelines-commit-statuses-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.7
+  evidence: '"Create a build status for a commit", schema "paginated_commitstatuses" / "commitstatus"'
+  reason: The surface records and reports build results against commits, the feedback mechanism of a CI
+    pipeline. Mapped to Continuous Integration Management; some chance it is better read as generic source-control
+    metadata, hence 0.7.

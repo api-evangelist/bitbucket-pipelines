@@ -648,6 +648,9 @@ apis:
   - type: Authentication
     url: https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication
 common:
+- type: CapabilityMap
+  url: capabilities/bitbucket-pipelines-capability-edges.yml
+  name: Bitbucket Pipelines Business Capability Map
 - type: AgenticAccess
   url: agentic-access/bitbucket-pipelines-agentic-access.yml
 - type: VulnerabilityDisclosure
