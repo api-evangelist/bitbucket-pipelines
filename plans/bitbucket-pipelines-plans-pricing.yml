@@ -127,3 +127,49 @@ plans:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  - seat
+  - subscription
+  units:
+  - compute
+  - seat
+  plans:
+  - name: Bitbucket Cloud Free (Pipelines)
+    access: free
+    model: seat
+    model_how: derived
+    units:
+    - other
+    - seat
+    periods:
+    - month
+  - name: Bitbucket Cloud Standard (Pipelines)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - other
+    - seat
+    periods:
+    - month
+  - name: Bitbucket Cloud Premium (Pipelines)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - other
+    - seat
+    periods:
+    - month
+  - name: Additional Pipelines build minutes
+    access: addon
+    model: metered
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - month
