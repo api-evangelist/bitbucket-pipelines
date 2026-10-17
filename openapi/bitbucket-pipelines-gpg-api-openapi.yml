@@ -303,25 +303,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    account_links:
-      type: object
-      title: Account Links
-      description: Links related to an Account.
-      properties:
-        avatar:
-          $ref: '#/components/schemas/link'
-      additionalProperties: true
-    object:
-      type: object
-      description: Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.
-      properties:
-        type:
-          type: string
-      required:
-      - type
-      additionalProperties: true
-      discriminator:
-        propertyName: type
     paginated_gpg_user_keys:
       type: object
       title: Paginated GPG User Keys
@@ -354,42 +335,25 @@ components:
           minItems: 0
           uniqueItems: true
       additionalProperties: false
-    error:
+    object:
       type: object
-      title: Error
       description: Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.
       properties:
         type:
           type: string
-        error:
-          type: object
-          properties:
-            message:
-              type: string
-            detail:
-              type: string
-            data:
-              type: object
-              description: Optional structured data that is endpoint-specific.
-              properties: {}
-              additionalProperties: true
-          required:
-          - message
-          additionalProperties: false
       required:
       - type
       additionalProperties: true
-    link:
+      discriminator:
+        propertyName: type
+    account_links:
       type: object
-      title: Link
-      description: A link to a resource related to this object.
+      title: Account Links
+      description: Links related to an Account.
       properties:
-        href:
-          type: string
-          format: uri
-        name:
-          type: string
-      additionalProperties: false
+        avatar:
+          $ref: '#/components/schemas/link'
+      additionalProperties: true
     account:
       allOf:
       - $ref: '#/components/schemas/object'
@@ -407,6 +371,17 @@ components:
           uuid:
             type: string
         additionalProperties: true
+    link:
+      type: object
+      title: Link
+      description: A link to a resource related to this object.
+      properties:
+        href:
+          type: string
+          format: uri
+        name:
+          type: string
+      additionalProperties: false
     GPG_account_key:
       allOf:
       - $ref: '#/components/schemas/object'
@@ -465,6 +440,31 @@ components:
                 additionalProperties: false
             additionalProperties: false
         additionalProperties: true
+    error:
+      type: object
+      title: Error
+      description: Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.
+      properties:
+        type:
+          type: string
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+            detail:
+              type: string
+            data:
+              type: object
+              description: Optional structured data that is endpoint-specific.
+              properties: {}
+              additionalProperties: true
+          required:
+          - message
+          additionalProperties: false
+      required:
+      - type
+      additionalProperties: true
   securitySchemes:
     basic:
       type: http

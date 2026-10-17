@@ -744,17 +744,6 @@ paths:
       - api-token
 components:
   schemas:
-    object:
-      type: object
-      description: Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.
-      properties:
-        type:
-          type: string
-      required:
-      - type
-      additionalProperties: true
-      discriminator:
-        propertyName: type
     report:
       allOf:
       - $ref: '#/components/schemas/object'
@@ -821,6 +810,17 @@ components:
       - uuid
       - commitHash
       x-bb-url: /rest/2.0/accounts/{target_user.uuid}/repositories/{repository.uuid}/commits/{commitHash}/reports/{uuid}
+    object:
+      type: object
+      description: Base type for most resource objects. It defines the common `type` element that identifies an object's type. It also identifies the element as Swagger's `discriminator`.
+      properties:
+        type:
+          type: string
+      required:
+      - type
+      additionalProperties: true
+      discriminator:
+        propertyName: type
     paginated_annotations:
       type: object
       title: Paginated Annotations
@@ -849,6 +849,28 @@ components:
           type: string
           format: uri
           description: Link to previous page if it exists. A collections first page does not have this value. This is an optional element that is not provided in all responses. Some result sets strictly support forward navigation and never provide previous links. Clients must anticipate that backwards navigation is not always available. Use this link to navigate the result set and refrain from constructing your own URLs.
+    report_data:
+      type: object
+      title: Report Data
+      description: A key-value element that will be displayed along with the report.
+      properties:
+        type:
+          enum:
+          - BOOLEAN
+          - DATE
+          - DURATION
+          - LINK
+          - NUMBER
+          - PERCENTAGE
+          - TEXT
+          type: string
+          description: The type of data contained in the value field. If not provided, then the value will be detected as a boolean, number or string.
+        title:
+          type: string
+          description: A string describing what this data field represents.
+        value:
+          type: object
+          description: The value of the data element.
     report_annotation:
       allOf:
       - $ref: '#/components/schemas/object'
@@ -967,28 +989,6 @@ components:
       required:
       - type
       additionalProperties: true
-    report_data:
-      type: object
-      title: Report Data
-      description: A key-value element that will be displayed along with the report.
-      properties:
-        type:
-          enum:
-          - BOOLEAN
-          - DATE
-          - DURATION
-          - LINK
-          - NUMBER
-          - PERCENTAGE
-          - TEXT
-          type: string
-          description: The type of data contained in the value field. If not provided, then the value will be detected as a boolean, number or string.
-        title:
-          type: string
-          description: A string describing what this data field represents.
-        value:
-          type: object
-          description: The value of the data element.
   securitySchemes:
     basic:
       type: http
