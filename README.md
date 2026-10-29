@@ -1,4 +1,4 @@
-# Bitbucket Pipelines (bitbucket-pipelines)
+# Bitbucket Pipelines
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,62 +66,169 @@
 
 Bitbucket Pipelines is Atlassian's built-in CI/CD service for Bitbucket Cloud, with cloud-hosted and self-hosted runners and YAML-defined pipelines. Pipelines is consumed via the Bitbucket Cloud REST API v2.0 under the /pipelines/ resource family. Atlassian publishes a Swagger 2.0 specification for the full Bitbucket Cloud API.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/bitbucket-pipelines/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/bitbucket-pipelines/refs/heads/main/apis.yml)
+**Areas:** DevOps · CI/CD · Pipelines · Atlassian · Bitbucket · Hosted · Self-Hosted Runners · Developer Tools
 
-## Tags
+## Bitbucket Pipelines on APIs.io
 
-- DevOps
-- CI/CD
-- Pipelines
-- Atlassian
-- Bitbucket
-- Hosted
-- Self-Hosted Runners
+Everything profiled for Bitbucket Pipelines is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/bitbucket-pipelines/](https://apis.io/providers/bitbucket-pipelines/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (23)
 
-- **Created:** 2026-05-08
-- **Modified:** 2026-05-19
+- [Bitbucket Pipelines Addon API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-addon-api/) — The addon resource is intended to use used by Bitbucket Cloud Connect Apps, and only supports JWT authentication.
+- [Bitbucket Pipelines Branch restrictions API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-branch-restrictions-api/) — Repository owners and administrators can set branch management rules on a repository that control what can be pushed by whom. Through these rules, you can…
+- [Bitbucket Pipelines Branching model API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-branching-model-api/) — The branching model resource is used to modify the branching model for a repository. You can use the branching model to define a branch based workflow for…
+- [Bitbucket Pipelines Commit statuses API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-commit-statuses-api/) — Commit statuses provide a way to tag commits with meta data, like automated build results.
+- [Bitbucket Pipelines Commits API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-commits-api/) — These are the repository's commits. They are paginated and returned in reverse chronological order, similar to the output of git log.
+- [Bitbucket Pipelines Deployments API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-deployments-api/) — Teams are deploying code faster than ever, thanks to continuous delivery practices and tools like Bitbucket Pipelines. Bitbucket Deployments gives teams…
+- [Bitbucket Pipelines Downloads API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-downloads-api/) — Access the list of download links associated with the repository.
+- [Bitbucket Pipelines GPG API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-gpg-api/) — The GPG resource allows you to manage GPG keys.
+- [Bitbucket Pipelines Issue tracker API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-issue-tracker-api/) — The issue resources provide functionality for getting information on issues in an issue tracker, creating new issues, updating them and deleting them. You…
+- [Bitbucket Pipelines API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-pipelines-api/) — Bitbucket Pipelines brings continuous delivery to Bitbucket Cloud, empowering teams with full branching to deployment visibility and faster feedback loops.
+- [Bitbucket Pipelines Projects API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-projects-api/) — Bitbucket Cloud projects make it easier for teams to focus on a goal, product, or process by organizing their repositories.
+- [Bitbucket Pipelines Properties API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-properties-api/) — The properties API from Bitbucket Pipelines — 4 operation(s) for properties.
+- [Bitbucket Pipelines Refs API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-refs-api/) — The refs resource allows you access branches and tags in a repository. By default, results will be in the order the underlying source control system returns…
+- [Bitbucket Pipelines Reports API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-reports-api/) — Code insights provides reports, annotations, and metrics to help you and your team improve code quality in pull requests throughout the code review process.…
+- [Bitbucket Pipelines Repositories API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-repositories-api/) — A Git repository is a virtual storage of your project. It allows you to save versions of your code, which you can access when needed. The repo resource…
+- [Bitbucket Pipelines Search API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-search-api/) — The Search API from Bitbucket Pipelines — 3 operation(s) for search.
+- [Bitbucket Pipelines Snippets API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-snippets-api/) — Snippets allow you share code segments or files with yourself, members of your workspace, or the world. Like pull requests, repositories and workspaces, the…
+- [Bitbucket Pipelines Source API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-source-api/) — Browse the source code in the repository and create new commits by uploading.
+- [Bitbucket Pipelines SSH API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-ssh-api/) — The SSH resource allows you to manage SSH keys.
+- [Bitbucket Pipelines Users API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-users-api/) — The users resource allows you to access public information associated with a user account. Most resources in the users endpoint have been deprecated in…
+- [Bitbucket Pipelines Webhooks API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-webhooks-api/) — Webhooks provide a way to configure Bitbucket Cloud to make requests to your server (or another external service) whenever certain events occur in Bitbucket…
+- [Bitbucket Pipelines Workspaces API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-workspaces-api/) — A workspace is where you create repositories, collaborate on your code, and organize different streams of work in your Bitbucket Cloud account. Workspaces…
+- [Bitbucket Pipelines Pull Requests API](https://apis.io/apis/bitbucket-pipelines/bitbucket-pipelines-pull-requests-api/) — Pull requests are a feature that makes it easier for developers to collaborate using Bitbucket. They provide a user-friendly web interface for discussing…
 
-## APIs
+### Published properties
 
-### Bitbucket Cloud REST API v2.0 (Pipelines)
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-The Pipelines slice of the Bitbucket Cloud REST API v2.0. Endpoint families include /repositories/{workspace}/{repo_slug}/pipelines/, /pipelines/{pipeline_uuid}/steps/, /pipelines_config, deployments, environments, schedules, ssh keys, variables, known hosts, runners and caches. OAuth 2.0, app passwords or workspace access tokens.
+#### Agentic access (1)
 
-- **Human URL:** [https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/](https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/)
-- **Base URL:** `https://api.bitbucket.org/2.0`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Bitbucket Pipelines Agentic Access](https://apis.io/agentic-access/bitbucket-pipelines/bitbucket-pipelines-agentic-access/)
 
-- REST
-- v2.0
-- Pipelines
-- Deployments
-- Runners
+#### Collections (24)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pipelines/)
-- [API Reference](https://developer.atlassian.com/cloud/bitbucket/rest/intro/)
-- [OpenAPI](openapi/bitbucket-pipelines-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/bitbucket-pipelines.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bitbucket-pipelines.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Open A P I Source](https://api.bitbucket.org/swagger.json)
-- [Authentication](https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication)
+- [Bitbucket API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines/)
+- [Bitbucket Addon API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-addon-api/)
+- [Bitbucket Addon Branch restrictions API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-branch-restrictions-api/)
+- [Bitbucket Addon Branching model API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-branching-model-api/)
+- [Bitbucket Addon Commit statuses API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-commit-statuses-api/)
+- [Bitbucket Addon Commits API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-commits-api/)
+- [Bitbucket Addon Deployments API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-deployments-api/)
+- [Bitbucket Addon Downloads API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-downloads-api/)
+- [Bitbucket Addon GPG API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-gpg-api/)
+- [Bitbucket Addon Issue tracker API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-issue-tracker-api/)
+- [Bitbucket Addon Pipelines API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-pipelines-api/)
+- [Bitbucket Addon Projects API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-projects-api/)
+- [Bitbucket Addon properties API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-properties-api/)
+- [Bitbucket Addon Pullrequests API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-pullrequests-api/)
+- [Bitbucket Addon Refs API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-refs-api/)
+- [Bitbucket Addon Reports API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-reports-api/)
+- [Bitbucket Addon Repositories API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-repositories-api/)
+- [Bitbucket Addon Search API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-search-api/)
+- [Bitbucket Addon Snippets API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-snippets-api/)
+- [Bitbucket Addon Source API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-source-api/)
+- [Bitbucket Addon SSH API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-ssh-api/)
+- [Bitbucket Addon Users API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-users-api/)
+- [Bitbucket Addon Webhooks API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-webhooks-api/)
+- [Bitbucket Addon Workspaces API](https://apis.io/collections/bitbucket-pipelines/open-bitbucket-pipelines-workspaces-api/)
 
-## Common Properties
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Bitbucket Pipelines Authentication](https://apis.io/security/bitbucket-pipelines/bitbucket-pipelines-authentication/)
+- [Bitbucket Pipelines Domain Security](https://apis.io/security/bitbucket-pipelines/bitbucket-pipelines-domain-security/)
+- [Bitbucket Pipelines Vulnerability Disclosure](https://apis.io/security/bitbucket-pipelines/bitbucket-pipelines-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Bitbucket Pipelines Scopes](https://apis.io/scopes/bitbucket-pipelines/bitbucket-pipelines-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Bitbucket Pipelines Plans Pricing](https://apis.io/plans/bitbucket-pipelines/bitbucket-pipelines-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Bitbucket Pipelines Rate Limits](https://apis.io/rate-limits/bitbucket-pipelines/bitbucket-pipelines-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Bitbucket Pipelines Finops](https://apis.io/finops/bitbucket-pipelines/bitbucket-pipelines-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://bitbucket.org/product/features/pipelines)
 - [Documentation](https://support.atlassian.com/bitbucket-cloud/docs/get-started-with-bitbucket-pipelines/)
 - [Pricing](https://www.atlassian.com/software/bitbucket/pricing)
-- [Git Hub](https://bitbucket.org/atlassian/atlassian-pipelines-pipes)
-- [Status Page](https://bitbucket.status.atlassian.com/)
-- [Plans](plans/bitbucket-pipelines-plans-pricing.yml)
-- [Rate Limits](rate-limits/bitbucket-pipelines-rate-limits.yml)
-- [Fin Ops](finops/bitbucket-pipelines-finops.yml)
+- [Status](https://bitbucket.status.atlassian.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 45.5** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 53.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 39.5 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 18.4 |
+
+**Agent readiness 34.9** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 27.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/bitbucket-pipelines/](https://apis.io/providers/bitbucket-pipelines/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Bitbucket Pipelines: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/bitbucket-pipelines/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
